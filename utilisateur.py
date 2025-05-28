@@ -7,18 +7,18 @@ class Utilisateur:
     def emprunter_livre(self, livre):
         if livre.emprunter():
             self.livres_empruntes.append(livre)
-            print(f"{self.nom} a emprunté le livre '{livre.get_titre()}'.")
+            print(f"{self.nom} a emprunté '{livre.get_titre()}'")
         else:
             print(f"Le livre '{livre.get_titre()}' n'est pas disponible.")
 
-    def rendre_livre(self, isbn):
+    def rendre_livre(self, titre):
         for livre in self.livres_empruntes:
-            if livre.get_isbn() == isbn:
+            if livre.get_titre() == titre:
                 livre.retourner()
                 self.livres_empruntes.remove(livre)
-                print(f"{self.nom} a rendu le livre '{livre.get_titre()}'.")
+                print(f"{self.nom} a rendu '{titre}'")
                 return
-        print("Livre non trouvé dans les emprunts.")
+        print(f"{self.nom} n'a pas emprunté le livre '{titre}'")
 
     def afficher_livres(self):
         if not self.livres_empruntes:
