@@ -1,5 +1,5 @@
-from livre import Livre
-from utilisateur import Utilisateur
+from Livre import Livre
+from Utilisateur import Utilisateur
 
 class Bibliotheque:
     def __init__(self):
