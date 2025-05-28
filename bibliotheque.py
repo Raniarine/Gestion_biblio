@@ -7,9 +7,8 @@ class Bibliotheque:
         self.utilisateurs = []
 
     def ajouter_livre(self, livre):
-    self.livres.append(livre)
-    print("Livre ajouté avec succès.")
-
+        self.livres.append(livre)
+        print("Livre ajouté avec succès.")
 
     def enregistrer_utilisateur(self, nom, identifiant):
         utilisateur = Utilisateur(nom, identifiant)
