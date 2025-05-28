@@ -1,9 +1,9 @@
-from bibliotheque import Bibliotheque
 from livre import Livre
 from utilisateur import Utilisateur
+from bibliotheque import Bibliotheque
 
 def menu():
-    print("\n********* MENU BIBLIOTHÈQUE **********")
+    print("\n***** MENU BIBLIOTHÈQUE *****")
     print("1. Ajouter un livre")
     print("2. Inscrire un utilisateur")
     print("3. Lister les livres")
@@ -17,41 +17,40 @@ def main():
     while True:
         menu()
         choix = input("Choix : ")
-
         if choix == "1":
             titre = input("Titre : ")
             auteur = input("Auteur : ")
-            isbn = input("ISBN : ")
-            livre = Livre(titre, auteur, isbn)
+            livre = Livre(titre, auteur)
             biblio.ajouter_livre(livre)
-
         elif choix == "2":
             nom = input("Nom : ")
             identifiant = input("Identifiant : ")
             utilisateur = Utilisateur(nom, identifiant)
-            biblio.enregistrer_utilisateur(utilisateur)
-
+            biblio.ajouter_utilisateur(utilisateur)
         elif choix == "3":
-            print("Liste des livres disponibles :")
             biblio.lister_livres(uniquement_disponibles=True)
-
         elif choix == "4":
-            identifiant = input("Identifiant utilisateur : ")
-            isbn = input("ISBN du livre : ")
-            biblio.emprunter_livre(isbn, identifiant)
-
+            nom_user = input("Nom utilisateur : ")
+            titre = input("Titre du livre : ")
+            # trouver et emprunter
+            for u in biblio.utilisateurs:
+                if u.nom == nom_user:
+                    for l in biblio.livres:
+                        if l.get_titre() == titre:
+                            u.emprunter_livre(l)
+                            break
+                    break
         elif choix == "5":
-            identifiant = input("Identifiant utilisateur : ")
-            isbn = input("ISBN du livre : ")
-            biblio.rendre_livre(isbn, identifiant)
-
+            nom_user = input("Nom utilisateur : ")
+            titre = input("Titre du livre : ")
+            for u in biblio.utilisateurs:
+                if u.nom == nom_user:
+                    u.rendre_livre(titre)
+                    break
         elif choix == "6":
             biblio.afficher_utilisateurs()
-
         elif choix == "7":
-            print("Au revoir !")
             break
-
         else:
             print("Choix invalide.")
 
