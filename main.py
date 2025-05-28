@@ -1,1 +1,55 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"toc_visible":true,"mount_file_id":"1ZwhvXDCAJ3UsKZeVtQBKn8UNwkK3YBnz","authorship_tag":"ABX9TyOikG473df0C1r9JgKxa9Se"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":3,"metadata":{"colab":{"base_uri":"https://localhost:8080/","height":464},"collapsed":true,"id":"cP2R0YkiRrad","executionInfo":{"status":"error","timestamp":1747838553687,"user_tz":-60,"elapsed":135,"user":{"displayName":"Rania Mouncir","userId":"12541872061145942956"}},"outputId":"6e193196-5683-4b11-e076-9a7ce1122860"},"outputs":[{"output_type":"error","ename":"ModuleNotFoundError","evalue":"No module named 'bibliotheque'","traceback":["\u001b[0;31m---------------------------------------------------------------------------\u001b[0m","\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)","\u001b[0;32m<ipython-input-3-8398ec80efd1>\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mfrom\u001b[0m \u001b[0mbibliotheque\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mBibliotheque\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mmenu\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"\\n********* MENU BIBLIOTHÈQUE **********\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"1. Ajouter un livre\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n","\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'bibliotheque'","","\u001b[0;31m---------------------------------------------------------------------------\u001b[0;32m\nNOTE: If your import is failing due to a missing package, you can\nmanually install dependencies using either !pip or !apt.\n\nTo view examples of installing some common dependencies, click the\n\"Open Examples\" button below.\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n"],"errorDetails":{"actions":[{"action":"open_url","actionText":"Open Examples","url":"/notebooks/snippets/importing_libraries.ipynb"}]}}],"source":["from bibliotheque import Bibliotheque\n","\n","def menu():\n","    print(\"\\n********* MENU BIBLIOTHÈQUE **********\")\n","    print(\"1. Ajouter un livre\")\n","    print(\"2. Inscrire un utilisateur\")\n","    print(\"3. Lister les livres\")\n","    print(\"4. Emprunter un livre\")\n","    print(\"5. Rendre un livre\")\n","    print(\"6. Afficher les utilisateurs\")\n","    print(\"7. Quitter\")\n","\n","def main():\n","    biblio = Bibliotheque()\n","    while True:\n","        menu()\n","        choix = input(\"Choix : \")\n","\n","        if choix == \"1\":\n","            titre = input(\"Titre : \")\n","            auteur = input(\"Auteur : \")\n","            isbn = input(\"ISBN : \")\n","            biblio.ajouter_livre(titre, auteur, isbn)\n","\n","        elif choix == \"2\":\n","            nom = input(\"Nom : \")\n","            identifiant = input(\"Identifiant : \")\n","            biblio.enregistrer_utilisateur(nom, identifiant)\n","\n","        elif choix == \"3\":\n","            print(\"Liste des livres disponibles :\")\n","            biblio.lister_livres(uniquement_disponibles=True)\n","\n","        elif choix == \"4\":\n","            identifiant = input(\"Identifiant utilisateur : \")\n","            isbn = input(\"ISBN du livre : \")\n","            biblio.emprunter_livre(identifiant, isbn)\n","\n","        elif choix == \"5\":\n","            identifiant = input(\"Identifiant utilisateur : \")\n","            isbn = input(\"ISBN du livre : \")\n","            biblio.rendre_livre(identifiant, isbn)\n","\n","        elif choix == \"6\":\n","            biblio.afficher_utilisateurs()\n","\n","        elif choix == \"7\":\n","            print(\"Au revoir !\")\n","            break\n","\n","        else:\n","            print(\"Choix invalide.\")\n","\n","if __name__ == \"__main__\":\n","    main()\n"]},{"cell_type":"code","source":["from google.colab import drive\n","drive.mount('/content/drive')"],"metadata":{"id":"DniVkYi_TNy7"},"execution_count":null,"outputs":[]}]}
+from bibliotheque import Bibliotheque
+
+def menu():
+    print("\n********* MENU BIBLIOTHÈQUE **********")
+    print("1. Ajouter un livre")
+    print("2. Inscrire un utilisateur")
+    print("3. Lister les livres")
+    print("4. Emprunter un livre")
+    print("5. Rendre un livre")
+    print("6. Afficher les utilisateurs")
+    print("7. Quitter")
+
+def main():
+    biblio = Bibliotheque()
+    while True:
+        menu()
+        choix = input("Choix : ")
+
+        if choix == "1":
+            titre = input("Titre : ")
+            auteur = input("Auteur : ")
+            isbn = input("ISBN : ")
+            biblio.ajouter_livre(titre, auteur, isbn)
+
+        elif choix == "2":
+            nom = input("Nom : ")
+            identifiant = input("Identifiant : ")
+            biblio.enregistrer_utilisateur(nom, identifiant)
+
+        elif choix == "3":
+            print("Liste des livres disponibles :")
+            biblio.lister_livres(uniquement_disponibles=True)
+
+        elif choix == "4":
+            identifiant = input("Identifiant utilisateur : ")
+            isbn = input("ISBN du livre : ")
+            biblio.emprunter_livre(identifiant, isbn)
+
+        elif choix == "5":
+            identifiant = input("Identifiant utilisateur : ")
+            isbn = input("ISBN du livre : ")
+            biblio.rendre_livre(identifiant, isbn)
+
+        elif choix == "6":
+            biblio.afficher_utilisateurs()
+
+        elif choix == "7":
+            print("Au revoir !")
+            break
+
+        else:
+            print("Choix invalide.")
+
+if __name__ == "__main__":
+    main()
