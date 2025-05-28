@@ -23,3 +23,5 @@ class Bibliotheque:
         for utilisateur in self.utilisateurs:
             print(f"Nom: {utilisateur.nom}, ID: {utilisateur.identifiant}")
             utilisateur.afficher_livres()
+    def afficher_livres(self):
+        self.lister_livres()
