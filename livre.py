@@ -1,20 +1,18 @@
 class Livre:
-    def __init__(self, titre, auteur, isbn):
+    def __init__(self, titre, auteur):
         self._titre = titre
         self._auteur = auteur
-        self._isbn = isbn
         self._disponible = True
 
     def afficher_info(self):
         statut = "Disponible" if self._disponible else "Emprunté"
-        print(f"Titre: {self._titre}, Auteur: {self._auteur}, ISBN: {self._isbn}, Statut: {statut}")
+        print(f"Titre: {self._titre}, Auteur: {self._auteur}, Statut: {statut}")
 
     def emprunter(self):
         if self._disponible:
             self._disponible = False
             return True
-        else:
-            return False
+        return False
 
     def retourner(self):
         self._disponible = True
@@ -25,6 +23,5 @@ class Livre:
     def get_titre(self):
         return self._titre
 
-    def get_isbn(self):
-        return self._isbn
-
+    def get_auteur(self):
+        return self._auteur
