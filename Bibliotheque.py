@@ -1,1 +1,54 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyNVeCsjAosBKquBGgMmhcth"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":null,"metadata":{"id":"J3H42pazRjiP"},"outputs":[],"source":["from livre import Livre\n","from utilisateur import Utilisateur\n","\n","class Bibliotheque:\n","    def __init__(self):\n","        self.livres = []\n","        self.utilisateurs = []\n","\n","    def ajouter_livre(self, titre, auteur, isbn):\n","        livre = Livre(titre, auteur, isbn)\n","        self.livres.append(livre)\n","        print(\"Livre ajouté avec succès.\")\n","\n","    def enregistrer_utilisateur(self, nom, identifiant):\n","        utilisateur = Utilisateur(nom, identifiant)\n","        self.utilisateurs.append(utilisateur)\n","        print(\"Utilisateur enregistré.\")\n","\n","    def lister_livres(self, uniquement_disponibles=False):\n","        for livre in self.livres:\n","            if not uniquement_disponibles or livre.est_disponible():\n","                livre.afficher_info()\n","\n","    def trouver_livre(self, isbn):\n","        for livre in self.livres:\n","            if livre.get_isbn() == isbn:\n","                return livre\n","        return None\n","\n","    def trouver_utilisateur(self, identifiant):\n","        for utilisateur in self.utilisateurs:\n","            if utilisateur.identifiant == identifiant:\n","                return utilisateur\n","        return None\n","\n","    def emprunter_livre(self, identifiant, isbn):\n","        utilisateur = self.trouver_utilisateur(identifiant)\n","        livre = self.trouver_livre(isbn)\n","        if utilisateur and livre:\n","            utilisateur.emprunter_livre(livre)\n","        else:\n","            print(\"Utilisateur ou livre non trouvé.\")\n","\n","    def rendre_livre(self, identifiant, isbn):\n","        utilisateur = self.trouver_utilisateur(identifiant)\n","        if utilisateur:\n","            utilisateur.rendre_livre(isbn)\n","        else:\n","            print(\"Utilisateur non trouvé.\")\n","\n","    def afficher_utilisateurs(self):\n","        for utilisateur in self.utilisateurs:\n","            print(f\"Nom: {utilisateur.nom}, ID: {utilisateur.identifiant}\")\n","            utilisateur.afficher_livres()\n"]}]}
+from livre import Livre
+from utilisateur import Utilisateur
+
+class Bibliotheque:
+    def __init__(self):
+        self.livres = []
+        self.utilisateurs = []
+
+    def ajouter_livre(self, titre, auteur, isbn):
+        livre = Livre(titre, auteur, isbn)
+        self.livres.append(livre)
+        print("Livre ajouté avec succès.")
+
+    def enregistrer_utilisateur(self, nom, identifiant):
+        utilisateur = Utilisateur(nom, identifiant)
+        self.utilisateurs.append(utilisateur)
+        print("Utilisateur enregistré.")
+
+    def lister_livres(self, uniquement_disponibles=False):
+        for livre in self.livres:
+            if not uniquement_disponibles or livre.est_disponible():
+                livre.afficher_info()
+
+    def trouver_livre(self, isbn):
+        for livre in self.livres:
+            if livre.get_isbn() == isbn:
+                return livre
+        return None
+
+    def trouver_utilisateur(self, identifiant):
+        for utilisateur in self.utilisateurs:
+            if utilisateur.identifiant == identifiant:
+                return utilisateur
+        return None
+
+    def emprunter_livre(self, identifiant, isbn):
+        utilisateur = self.trouver_utilisateur(identifiant)
+        livre = self.trouver_livre(isbn)
+        if utilisateur and livre:
+            utilisateur.emprunter_livre(livre)
+        else:
+            print("Utilisateur ou livre non trouvé.")
+
+    def rendre_livre(self, identifiant, isbn):
+        utilisateur = self.trouver_utilisateur(identifiant)
+        if utilisateur:
+            utilisateur.rendre_livre(isbn)
+        else:
+            print("Utilisateur non trouvé.")
+
+    def afficher_utilisateurs(self):
+        for utilisateur in self.utilisateurs:
+            print(f"Nom: {utilisateur.nom}, ID: {utilisateur.identifiant}")
+            utilisateur.afficher_livres()
