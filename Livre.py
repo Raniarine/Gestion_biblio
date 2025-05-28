@@ -1,1 +1,30 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyOdiqXB8EmKa9qlNYLdW+Ak"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":null,"metadata":{"id":"XSQmGX_5Q-W0"},"outputs":[],"source":["class Livre:\n","    def __init__(self, titre, auteur, isbn):\n","        self._titre = titre\n","        self._auteur = auteur\n","        self._isbn = isbn\n","        self._disponible = True\n","\n","    def afficher_info(self):\n","        statut = \"Disponible\" if self._disponible else \"Emprunté\"\n","        print(f\"Titre: {self._titre}, Auteur: {self._auteur}, ISBN: {self._isbn}, Statut: {statut}\")\n","\n","    def emprunter(self):\n","        if self._disponible:\n","            self._disponible = False\n","            return True\n","        else:\n","            return False\n","\n","    def retourner(self):\n","        self._disponible = True\n","\n","    def est_disponible(self):\n","        return self._disponible\n","\n","    def get_titre(self):\n","        return self._titre\n","\n","    def get_isbn(self):\n","        return self._isbn\n","\n"]}]}
+class Livre:
+    def __init__(self, titre, auteur, isbn):
+        self._titre = titre
+        self._auteur = auteur
+        self._isbn = isbn
+        self._disponible = True
+
+    def afficher_info(self):
+        statut = "Disponible" if self._disponible else "Emprunté"
+        print(f"Titre: {self._titre}, Auteur: {self._auteur}, ISBN: {self._isbn}, Statut: {statut}")
+
+    def emprunter(self):
+        if self._disponible:
+            self._disponible = False
+            return True
+        else:
+            return False
+
+    def retourner(self):
+        self._disponible = True
+
+    def est_disponible(self):
+        return self._disponible
+
+    def get_titre(self):
+        return self._titre
+
+    def get_isbn(self):
+        return self._isbn
+
