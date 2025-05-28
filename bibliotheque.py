@@ -6,10 +6,10 @@ class Bibliotheque:
         self.livres = []
         self.utilisateurs = []
 
-    def ajouter_livre(self, titre, auteur, isbn):
-        livre = Livre(titre, auteur, isbn)
-        self.livres.append(livre)
-        print("Livre ajouté avec succès.")
+    def ajouter_livre(self, livre):
+    self.livres.append(livre)
+    print("Livre ajouté avec succès.")
+
 
     def enregistrer_utilisateur(self, nom, identifiant):
         utilisateur = Utilisateur(nom, identifiant)
