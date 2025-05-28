@@ -1,4 +1,6 @@
-from Bibliotheque import Bibliotheque
+from bibliotheque import Bibliotheque
+from livre import Livre
+from utilisateur import Utilisateur
 
 def menu():
     print("\n********* MENU BIBLIOTHÈQUE **********")
@@ -20,12 +22,14 @@ def main():
             titre = input("Titre : ")
             auteur = input("Auteur : ")
             isbn = input("ISBN : ")
-            biblio.ajouter_livre(titre, auteur, isbn)
+            livre = Livre(titre, auteur, isbn)
+            biblio.ajouter_livre(livre)
 
         elif choix == "2":
             nom = input("Nom : ")
             identifiant = input("Identifiant : ")
-            biblio.enregistrer_utilisateur(nom, identifiant)
+            utilisateur = Utilisateur(nom, identifiant)
+            biblio.enregistrer_utilisateur(utilisateur)
 
         elif choix == "3":
             print("Liste des livres disponibles :")
@@ -34,12 +38,12 @@ def main():
         elif choix == "4":
             identifiant = input("Identifiant utilisateur : ")
             isbn = input("ISBN du livre : ")
-            biblio.emprunter_livre(identifiant, isbn)
+            biblio.emprunter_livre(isbn, identifiant)
 
         elif choix == "5":
             identifiant = input("Identifiant utilisateur : ")
             isbn = input("ISBN du livre : ")
-            biblio.rendre_livre(identifiant, isbn)
+            biblio.rendre_livre(isbn, identifiant)
 
         elif choix == "6":
             biblio.afficher_utilisateurs()
