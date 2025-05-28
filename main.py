@@ -1,4 +1,4 @@
-from bibliotheque import Bibliotheque
+from Bibliotheque import Bibliotheque
 
 def menu():
     print("\n********* MENU BIBLIOTHÈQUE **********")
